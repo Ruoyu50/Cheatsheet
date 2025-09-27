@@ -15,7 +15,7 @@
 	•	git diff → 查看工作区未暂存的修改
 	•	git diff <commitA> <commitB> → 比较两个提交的差异
 	•	git diff <branchA> <branchB> → 比较两个分支的差异
-
+git ls-files                       # 查看 Git 跟踪的文件
 ⸻
 
 3. 分支管理
@@ -56,11 +56,15 @@
 	•	git push -f origin main → 强制推送，覆盖远程 main
 	•	git push -f origin <localBranch>:<remoteBranch> → 强制推送，把本地分支的内容覆盖远程目标分支
 	•	git pull → 拉取远程最新代码并合并到当前分支
-
+git remote -v                      # 查看远程地址
+git remote set-url origin <url>    # 修改远程仓库地址
+git pull origin main --rebase      # 拉取并与远程 rebase
 ⸻
 
 7. 清理 & 维护
 	•	git gc → 垃圾回收，清理不再引用的提交/对象
 	•	rm -rf .git → 让某个文件夹不再受 Git 管理
+	rm -rf Terminal/.git               # 删除子目录里的 git 仓库
 	•	rm -rf your-project-folder → 删除整个本地项目文件夹
+	git rm --cached Terminal           # 移除误加的子仓库
 ⸻
