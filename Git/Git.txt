@@ -1,0 +1,66 @@
+1. 初始化 & 配置
+	•	git init → 在本地初始化一个新的 Git 仓库
+	•	git config --global pager.branch false / true → 设置是否分页显示 git branch 的结果
+	•	git config --global pager.reflog false → 设置是否分页显示 git reflog 的结果
+
+⸻
+
+2. 状态 & 信息查看
+	•	git status → 查看当前工作区和暂存区的状态
+	•	git branch → 查看本地分支
+	•	git branch -r → 查看远程分支
+	•	git log --oneline → 压缩形式查看提交历史
+	•	git log --oneline --all --graph --decorate → 带分支结构的图形化提交历史
+	•	git reflog → 查看 HEAD 和分支的移动历史（包括 reset、checkout 等操作）
+	•	git diff → 查看工作区未暂存的修改
+	•	git diff <commitA> <commitB> → 比较两个提交的差异
+	•	git diff <branchA> <branchB> → 比较两个分支的差异
+
+⸻
+
+3. 分支管理
+	•	git branch <name> → 创建新分支
+	•	git branch -d <name> → 删除已合并的本地分支
+	•	git branch -D <name> → 强制删除本地分支（不管是否合并）
+	•	git checkout <branch> → 切换到某个分支
+	•	git checkout -b <newBranch> → 创建并切换到新分支
+	•	git checkout -b <newBranch> <commitID> → 从特定提交创建并切换到新分支
+	•	git checkout <commitID> → 游离 HEAD 到某个提交
+	•	git checkout --orphan <branchName> → 创建孤儿分支（没有历史）
+
+⸻
+
+4. 添加 & 提交
+	•	git add . → 添加所有修改（新文件/改动/删除）到暂存区
+	•	git add <file> → 添加指定文件到暂存区
+	•	git rm <file> → 删除文件，并记录到暂存区
+	•	git rm -rf . → 删除所有文件（提交后相当于清空项目）
+	•	git commit -m "message" → 提交暂存区内容，带消息
+	•	git commit -a -m "message" → 自动添加已跟踪文件的改动再提交（新文件不会被自动包含）
+
+⸻
+
+5. 回退 & 变基
+	•	git reset --soft <commit> → 回退到某提交，保留工作区和暂存区改动
+	•	git reset --mixed <commit>（默认）→ 回退到某提交，保留工作区改动，清空暂存区
+	•	git reset --hard <commit> → 回退到某提交，清空工作区和暂存区
+	•	git rebase <branch> → 把当前分支的提交，移到目标分支的最后
+
+⸻
+
+6. 远程操作
+	•	git remote add origin <url> → 绑定远程仓库
+	•	git push -u origin main → 第一次推送本地 main 并设置跟踪远程 main
+	•	git push → 推送到已绑定的远程分支
+	•	git push origin <branch> → 推送指定分支到远程
+	•	git push -f origin main → 强制推送，覆盖远程 main
+	•	git push -f origin <localBranch>:<remoteBranch> → 强制推送，把本地分支的内容覆盖远程目标分支
+	•	git pull → 拉取远程最新代码并合并到当前分支
+
+⸻
+
+7. 清理 & 维护
+	•	git gc → 垃圾回收，清理不再引用的提交/对象
+	•	rm -rf .git → 让某个文件夹不再受 Git 管理
+	•	rm -rf your-project-folder → 删除整个本地项目文件夹
+⸻
