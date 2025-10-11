@@ -7,18 +7,20 @@ Git Cheatsheet
 git init                           # 初始化本地仓库
 rm -rf .git                        # 删除本地仓库（彻底清空版本控制）
 rm -rf Terminal/.git               # 删除子目录里的 git 仓库
+rm -rf docs && npx @11ty/eleventy	#删除eleventy网页output的历史文件
 git config advice.forceDeleteBranch false
 git config --global init.defaultBranch <name>   # 设置默认初始分支名
 git branch -m <name>               # 重命名当前分支
 
 二、分支管理
 ------------------------
-git branch                         # 查看本地分支
+git branch                          # 查看本地分支
 git branch -r                       # 查看远程分支
 git branch <name>                   # 创建新分支
 git branch -d <name>                # 删除已合并的本地分支
 git branch -D <name>                # 强制删除本地分支
 git checkout <branch>               # 切换到分支
+git checkout <branch> -- .          # 目标分支覆盖当前分支
 git checkout <commitID>             # 切换到特定提交（分离 HEAD）
 git checkout -b <new-branch>        # 创建并切换到新分支
 git checkout -b <new-branch> <commitID>  # 从指定 commit 创建分支
@@ -41,7 +43,7 @@ git add .                          # 添加所有修改（新文件/改动/删�
 git add <file>                     # 添加指定文件到暂存区
 git rm <file>                      # 删除文件并记录到暂存区
 git rm -rf .                        # 删除所有文件
-git commit -m "message"            # 提交暂存区内容
+git commit -m "message"            # 提交暂存区内容，所在 branch(main) 指针前进到新 commit
 git commit -a -m "message"         # 跳过 git add，直接提交已修改过的文件（不包含新文件）
 
 五、回退与修改历史
@@ -63,6 +65,7 @@ git push                           # 推送到已绑定的远程分支
 git push origin <branch>           # 推送指定分支到远程
 git push -f origin main            # 强制推送，覆盖远程 main
 git push -f origin <local>:<remote> # 强制推送，本地分支覆盖远程目标分支
+git push origin --delete <branch>	#远程删除已push的分支
 git pull origin main --rebase      # 拉取远程最新代码并 rebase
 git pull                            # 拉取远程最新代码并合并
 
