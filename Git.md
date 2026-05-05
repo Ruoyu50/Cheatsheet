@@ -68,6 +68,9 @@ git push -f origin <local>:<remote> # 强制推送，本地分支覆盖远程目
 git push origin --delete <branch>	#远程删除已push的分支
 git pull origin main --rebase      # 拉取远程最新代码并 rebase
 git pull                            # 拉取远程最新代码并合并
+# 远程强制覆盖本地
+git fetch origin
+git reset --hard origin/main
 
 七、子模块 / 嵌套仓库
 ------------------------
